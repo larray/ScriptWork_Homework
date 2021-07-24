@@ -1,5 +1,7 @@
 function Get-NightmareStatus () {
     $Global:boh = @{}
+    $strSep = "|"
+
     $boh['service_spooler_state'] = (Get-Service Spooler).Status
     $regPath = 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint'
     if (Test-Path $regPath) {
@@ -24,6 +26,8 @@ function Get-NightmareStatus () {
             } else {$boh["ptr_$target"] = "NotConfigured"}
         }
     } Else {$boh["PTR_regpath"] = "MISSING"}
+
+    "$($boh.service_spooler_state)$strSep$($boh.PTR_regpath)$strSep$($boh.ptr_RegisterSpoolerRemoteRpcEndPoint)$strSep$($boh.PNP_regpath)$strSep$($boh.pnp_NoWarningNoElevationOnInstall)$strSep$($boh.pnp_UpdatePromptSettings)$strSep$($boh.pnp_RestrictDriverInstallationToAdministrators)"
  }
 
 function Set-NightmareLogConfig () {
