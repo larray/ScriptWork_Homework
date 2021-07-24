@@ -54,7 +54,7 @@ function Get-NightmareStatus () {
         }
     }
 
-    "$($boh.service_spooler_state)$strSep$($boh.PTR_regpath)$strSep$($boh.ptr_RegisterSpoolerRemoteRpcEndPoint)$strSep$($boh.PNP_regpath)$strSep$($boh.pnp_NoWarningNoElevationOnInstall)$strSep$($boh.pnp_UpdatePromptSettings)$strSep$($boh.pnp_RestrictDriverInstallationToAdministrators)"
+    "$env:COMPUTERNAME$strSep$($boh.service_spooler_state)$strSep$($boh.PTR_regpath)$strSep$($boh.ptr_RegisterSpoolerRemoteRpcEndPoint)$strSep$($boh.PNP_regpath)$strSep$($boh.pnp_NoWarningNoElevationOnInstall)$strSep$($boh.pnp_UpdatePromptSettings)$strSep$($boh.pnp_RestrictDriverInstallationToAdministrators)"
 
  }
 
